@@ -1,71 +1,349 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Neal Ni | Game Designer & Engineer</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-    body { font-family: Arial, sans-serif; max-width: 900px; margin: auto; padding: 20px; line-height: 1.6; }
-    h1 { font-size: 32px; }
-    h2 { margin-top: 40px; }
-    .section { margin-top: 30px; }
-    .project { margin-bottom: 20px; padding: 15px; background: #f5f5f5; border-radius: 8px; }
-    .project a { font-weight: bold; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neal Ni | Gameplay & Technical Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- 核心变量与基础设置 --- */
+        :root {
+            --bg-body: #0a0a0a;
+            --bg-card: #161616;
+            --bg-card-hover: #1f1f1f;
+            --text-main: #f0f0f0;
+            --text-muted: #888888;
+            --accent: #38bdf8; /* 科技蓝高亮 */
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --border-color: #333;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { text-decoration: none; color: var(--accent); transition: 0.3s; }
+        a:hover { color: #fff; text-shadow: 0 0 8px var(--accent-glow); }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- 头部 Header (简约大气) --- */
+        header {
+            text-align: center;
+            padding: 80px 0 60px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 60px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            background: linear-gradient(120deg, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .title {
+            color: var(--accent);
+            font-size: 1.25rem;
+            margin-top: 10px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .contact-info {
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* --- 通用板块 --- */
+        section { margin-bottom: 80px; }
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+        h2::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 24px;
+            background: var(--accent);
+            margin-right: 15px;
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        p { color: #ccc; font-size: 1.05rem; }
+
+        /* --- 视频作品集 (YouTube Grid) --- */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .video-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px -10px var(--accent-glow);
+        }
+
+        /* 响应式 YouTube 容器 */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 比例 */
+            height: 0;
+            background: #000;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-info { padding: 20px; }
+        .video-info h3 { margin: 0 0 8px; font-size: 1.1rem; color: #fff; font-weight: 600; }
+        .video-info p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+
+        /* --- 简历列表 Experience --- */
+        .job-item {
+            margin-bottom: 40px;
+            padding-left: 20px;
+            border-left: 1px solid var(--border-color);
+            position: relative;
+        }
+        .job-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 6px;
+            width: 9px;
+            height: 9px;
+            background: var(--bg-body);
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+        .job-company { font-size: 1.3rem; font-weight: 700; color: #fff; }
+        .job-role { color: var(--accent); font-weight: 500; margin-bottom: 5px; }
+        .job-date { color: var(--text-muted); font-size: 0.9rem; font-family: monospace; }
+        
+        .job-desc ul { margin: 10px 0; padding-left: 20px; color: #ccc; }
+        .job-desc li { margin-bottom: 8px; }
+
+        /* --- 技能标签 Skills --- */
+        .skills-list { display: flex; flex-wrap: wrap; gap: 12px; }
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #d1d1d1;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+        .skill-tag:hover {
+            border-color: var(--accent);
+            color: #fff;
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        /* --- 底部 Footer --- */
+        footer {
+            text-align: center;
+            padding: 60px 0 20px;
+            color: #444;
+            font-size: 0.8rem;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .job-header { flex-direction: column; }
+            .container { padding: 20px; }
+        }
+    </style>
 </head>
 <body>
 
-<h1>Neal Ni</h1>
-<p>Combat Designer / Technical Game Designer / Gameplay Engineer (UE5 & C++)</p>
+    <div class="container">
+        
+        <header>
+            <h1>NEAL NI</h1>
+            <div class="title">Gameplay & Technical Designer</div>
+            <div class="contact-info">
+                Vancouver, BC &nbsp;|&nbsp; +1 (778) 231-6806 &nbsp;|&nbsp; nideng@outlook.com <br>
+                <a href="#">View LinkedIn</a> &nbsp;•&nbsp; <a href="#">Download Resume</a>
+            </div>
+        </header>
 
-<p>Email: your_email@example.com  
-<br>LinkedIn: <a href="#">Your LinkedIn Link</a>  
-<br>GitHub: <a href="#">Your GitHub Link</a></p>
+        <section id="about">
+            <h2>Professional Summary</h2>
+            <p>
+                Seasoned Gameplay and Technical Designer with <strong>7 years of experience</strong> specializing in combat systems and 3C mechanics. 
+                Proven track record at top-tier studios (<strong>Tencent Games</strong>, <strong>Shengqu Games</strong>), delivering high-quality AAA cross-platform Action RPGs. 
+                Proficient in bridging the gap between design and engineering using <strong>Unreal Engine (Blueprints & C++)</strong> to rapidly prototype and implement complex gameplay features.
+            </p>
+        </section>
 
-<hr>
+        <section id="portfolio">
+            <h2>Combat & Technical Showcase</h2>
+            <div class="video-grid">
+                
+                <div class="video-card" style="grid-column: 1 / -1;">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/CkBULvqLnGU" title="Combat System Demo" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Core Combat System Demo</h3>
+                        <p>Comprehensive demonstration of the combat framework I architected, showcasing melee combos, hit reactions, parry mechanics, and overall game feel.</p>
+                    </div>
+                </div>
 
-<h2>About Me</h2>
-<p>
-I am a game designer and gameplay engineer with 8 years of experience in combat systems, animation systems, 
-and Unreal Engine development. I specialize in building combat mechanics from scratch using C++ and Blueprints, 
-focusing on motion, timing, and game feel.
-</p>
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/RQVcq-Rzn2E" title="Locomotion Details" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Locomotion & State Management</h3>
+                        <p>Showcasing the movement state machine handling armed vs. unarmed states, with seamless animation blending and state transitions.</p>
+                    </div>
+                </div>
 
-<h2>Featured Projects</h2>
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/r-BruLRkmBQ" title="AI Strafe Details" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>AI Behavior & Navigation</h3>
+                        <p>Technical breakdown of Enemy AI behaviors, specifically focusing on strafing logic, target tracking, and refined movement details.</p>
+                    </div>
+                </div>
 
-<div class="project">
-    <h3>⚔️ Custom UE5 Combat System (C++ + GAS)</h3>
-    <p>A fully modular combat system built from scratch, including hit detection, motion warping, 
-    animation states, and real-time ability logic.</p>
-    <a href="#">▶ Video / Demo</a> | <a href="#">📁 Source Code</a>
-</div>
+            </div>
+        </section>
 
-<div class="project">
-    <h3>🎮 Character Locomotion System</h3>
-    <p>Advanced movement system inspired by ALS/Lyra, featuring slope handling, leaning, pivoting, 
-    and animation state machines.</p>
-    <a href="#">▶ Watch Demo</a>
-</div>
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-list">
+                <span class="skill-tag">Unreal Engine 4/5</span>
+                <span class="skill-tag">C++ & Blueprints</span>
+                <span class="skill-tag">Combat Design</span>
+                <span class="skill-tag">3C Mechanics</span>
+                <span class="skill-tag">AI Behavior Trees</span>
+                <span class="skill-tag">Game Balancing</span>
+                <span class="skill-tag">System Architecture</span>
+                <span class="skill-tag">Unity</span>
+                <span class="skill-tag">Perforce / Git</span>
+            </div>
+        </section>
 
-<div class="project">
-    <h3>🧠 Enemy AI (Behavior Tree + EQS)</h3>
-    <p>Enemy combat behaviors, layered decision-making, and reactive movement built in UE5.</p>
-    <a href="#">▶ Video</a>
-</div>
+        <section id="experience">
+            <h2>Professional Experience</h2>
 
-<h2>Skills</h2>
-<ul>
-    <li>Unreal Engine 5 (Blueprints, C++, GAS, AI, Animation)</li>
-    <li>Combat System Design</li>
-    <li>Gameplay Programming</li>
-    <li>Technical Game Design</li>
-</ul>
+            <div class="job-item">
+                <div class="job-header">
+                    <span class="job-company">Syncarnation Studio</span>
+                    <span class="job-date">Jan 2025 – Present</span>
+                </div>
+                <div class="job-role">Gameplay and Technical Designer</div>
+                <div class="job-desc">
+                    <ul>
+                        <li><strong>Weapon & Build System:</strong> Designed and implemented diverse weapon mechanics and combat affixes to support multiple distinct player build archetypes.</li>
+                        <li><strong>AI & Gameplay Systems:</strong> Engineered enemy AI behaviors and the in-game shop system, establishing the foundational loop for progression.</li>
+                    </ul>
+                </div>
+            </div>
 
-<h2>Resume</h2>
-<p><a href="#">📄 Download Resume (PDF)</a></p>
+            <div class="job-item">
+                <div class="job-header">
+                    <span class="job-company">Tencent Games</span>
+                    <span class="job-date">Dec 2020 – Mar 2024</span>
+                </div>
+                <div class="job-role">Senior Combat Designer</div>
+                <div class="job-desc">
+                    <ul>
+                        <li><strong>Combat & AI System Architecture:</strong> Architected the core combat framework and foundational AI systems from scratch using UE4/5 & C++.</li>
+                        <li><strong>Boss & AI Design:</strong> Owned the full lifecycle of multiple high-end boss fights and elite enemies using Behavior Trees.</li>
+                        <li><strong>3C Implementation:</strong> Engineered character movement state machines and dynamic camera behaviors.</li>
+                    </ul>
+                </div>
+            </div>
 
-<hr>
-<p>© 2025 Neal Ni</p>
+            <div class="job-item">
+                <div class="job-header">
+                    <span class="job-company">Shengqu Games</span>
+                    <span class="job-date">July 2018 – Dec 2020</span>
+                </div>
+                <div class="job-role">Combat & Balance Designer</div>
+                <div class="job-desc">
+                    <ul>
+                        <li><strong>Class & Skill Design:</strong> Designed and implemented unique skill mechanics and combat rotations for diverse classes on mobile.</li>
+                        <li><strong>Holistic Balancing & Live Ops:</strong> Managed the balancing of both combat parameters and game economy; executed post-launch iterations based on data.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="job-item" style="border:none; padding-left:0; margin-bottom:20px;">
+                <div class="job-header">
+                    <span class="job-company" style="font-size:1.1rem;">Shanghai Jiao Tong University</span>
+                    <span class="job-date">2015 – 2018</span>
+                </div>
+                <div>Master’s Degree in Mechanical and Power Engineering</div>
+            </div>
+            <div class="job-item" style="border:none; padding-left:0;">
+                <div class="job-header">
+                    <span class="job-company" style="font-size:1.1rem;">Huazhong University of Science and Technology</span>
+                    <span class="job-date">2011 – 2015</span>
+                </div>
+                <div>Bachelor’s Degree in Power Engineering</div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Neal Ni. Designed for Performance.</p>
+        </footer>
+    </div>
 
 </body>
 </html>
+
