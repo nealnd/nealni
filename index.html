@@ -41,7 +41,7 @@
             padding: 40px 20px;
         }
 
-        /* --- 头部 Header (已更新) --- */
+        /* --- 头部 Header --- */
         header {
             text-align: center;
             padding: 80px 0 60px;
@@ -72,7 +72,7 @@
         /* 按钮样式的链接 */
         .btn-link {
             display: inline-block;
-            margin: 0 8px; /* 稍微调小间距以容纳3个按钮 */
+            margin: 0 8px; 
             padding: 6px 14px;
             border: 1px solid rgba(56, 189, 248, 0.3);
             border-radius: 4px;
@@ -148,21 +148,10 @@
         .video-info h3 { margin: 0 0 8px; font-size: 1.1rem; color: #fff; font-weight: 600; }
         .video-info p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
         
-        /* 演示下载按钮特殊样式 */
         .demo-btn-container {
             margin-top: 15px;
             padding-top: 15px;
             border-top: 1px solid #333;
-        }
-        .demo-link {
-            display: inline-flex;
-            align-items: center;
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-        .demo-link:hover {
-            text-decoration: underline;
         }
 
         /* --- 简历列表 Experience --- */
@@ -172,6 +161,8 @@
             border-left: 1px solid var(--border-color);
             position: relative;
         }
+        
+        /* 默认的小圆点 */
         .job-item::before {
             content: '';
             position: absolute;
@@ -182,6 +173,16 @@
             background: var(--bg-body);
             border: 2px solid var(--accent);
             border-radius: 50%;
+        }
+
+        /* --- [关键修复]：针对没有时间轴的条目（如教育背景）去除圆点和线 --- */
+        .job-item.no-decoration {
+            border-left: none;
+            padding-left: 0;
+        }
+        .job-item.no-decoration::before {
+            content: none; /* 彻底隐藏圆点 */
+            display: none;
         }
 
         .job-header {
@@ -229,7 +230,7 @@
             h1 { font-size: 2.5rem; }
             .job-header { flex-direction: column; }
             .container { padding: 20px; }
-            .btn-link { margin-bottom: 10px; display: block; text-align: center; } /* 手机端按钮竖排 */
+            .btn-link { margin-bottom: 10px; display: block; text-align: center; }
         }
     </style>
 </head>
@@ -373,14 +374,14 @@
 
         <section id="education">
             <h2>Education</h2>
-            <div class="job-item" style="border:none; padding-left:0; margin-bottom:20px;">
+            <div class="job-item no-decoration">
                 <div class="job-header">
                     <span class="job-company" style="font-size:1.1rem;">Shanghai Jiao Tong University</span>
                     <span class="job-date">2015 – 2018</span>
                 </div>
                 <div>Master’s Degree in Mechanical and Power Engineering</div>
             </div>
-            <div class="job-item" style="border:none; padding-left:0;">
+            <div class="job-item no-decoration">
                 <div class="job-header">
                     <span class="job-company" style="font-size:1.1rem;">Huazhong University of Science and Technology</span>
                     <span class="job-date">2011 – 2015</span>
@@ -396,6 +397,7 @@
 
 </body>
 </html>
+
 
 
 
