@@ -72,15 +72,17 @@
         /* 按钮样式的链接 */
         .btn-link {
             display: inline-block;
-            margin: 0 10px;
-            padding: 5px 10px;
+            margin: 0 8px; /* 稍微调小间距以容纳3个按钮 */
+            padding: 6px 14px;
             border: 1px solid rgba(56, 189, 248, 0.3);
             border-radius: 4px;
             transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
         .btn-link:hover {
             background: rgba(56, 189, 248, 0.1);
             border-color: var(--accent);
+            transform: translateY(-2px);
         }
 
         /* --- 通用板块 --- */
@@ -145,6 +147,23 @@
         .video-info { padding: 20px; }
         .video-info h3 { margin: 0 0 8px; font-size: 1.1rem; color: #fff; font-weight: 600; }
         .video-info p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+        
+        /* 演示下载按钮特殊样式 */
+        .demo-btn-container {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+        }
+        .demo-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .demo-link:hover {
+            text-decoration: underline;
+        }
 
         /* --- 简历列表 Experience --- */
         .job-item {
@@ -210,6 +229,7 @@
             h1 { font-size: 2.5rem; }
             .job-header { flex-direction: column; }
             .container { padding: 20px; }
+            .btn-link { margin-bottom: 10px; display: block; text-align: center; } /* 手机端按钮竖排 */
         }
     </style>
 </head>
@@ -226,6 +246,10 @@
                 <a href="https://www.linkedin.com/in/neal-ni" target="_blank" class="btn-link">
                     View LinkedIn
                 </a> 
+
+                <a href="https://github.com/nealnd" target="_blank" class="btn-link">
+                    View GitHub
+                </a>
                 
                 <a href="resume.pdf" target="_blank" class="btn-link">
                     Download Resume
@@ -252,7 +276,13 @@
                     </div>
                     <div class="video-info">
                         <h3>Core Combat System Demo</h3>
-                        <p>This is a part-time project where I built the combat system entirely in C++ and Blueprint. It’s still a work in progress, and I will continue adding features such as ranged skills (e.g., homing projectiles and traps). I also plan to integrate jumping into the combat experience so that it becomes a meaningful gameplay element. Other weapons are already supported by the existing programming framework — they mainly require asset implementation. Enemy AI development is ongoing, and the current combat pacing still needs refinement because there are not many pressure points yet. </p>
+                        <p>This is a part-time project where I built the combat system entirely in C++ and Blueprint. It’s still a work in progress, and I will continue adding features such as ranged skills (e.g., homing projectiles and traps). I also plan to integrate jumping into the combat experience so that it becomes a meaningful gameplay element. Other weapons are already supported by the existing programming framework — they mainly require asset implementation. Enemy AI development is ongoing, and the current combat pacing still needs refinement because there are not many pressure points yet.</p>
+                        
+                        <div class="demo-btn-container">
+                            <a href="https://drive.google.com/file/d/1LQ5cR5OSMwdmulBpYMrxLydkrJOC3Zlt/view?usp=drive_link" target="_blank" class="btn-link" style="margin:0; border-color: var(--accent); color: var(--accent);">
+                                🎮 Download Playable Demo
+                            </a>
+                        </div>
                     </div>
                 </div>
 
