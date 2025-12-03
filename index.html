@@ -190,12 +190,26 @@
             justify-content: space-between;
             align-items: baseline;
             flex-wrap: wrap;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
         .job-company { font-size: 1.3rem; font-weight: 700; color: #fff; }
-        .job-role { color: var(--accent); font-weight: 500; margin-bottom: 5px; }
+        .job-role { color: var(--accent); font-weight: 500; margin-bottom: 8px; font-size: 1.05rem; }
         .job-date { color: var(--text-muted); font-size: 0.9rem; font-family: monospace; }
         
+        /* 项目链接样式 */
+        .project-meta {
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: #d1d1d1;
+        }
+        .project-meta a {
+            font-weight: 600;
+            border-bottom: 1px dotted var(--accent);
+        }
+        .project-meta a:hover {
+            border-bottom-style: solid;
+        }
+
         .job-desc ul { margin: 10px 0; padding-left: 20px; color: #ccc; }
         .job-desc li { margin-bottom: 8px; }
 
@@ -334,6 +348,13 @@
                     <span class="job-date">Jan 2025 – Present</span>
                 </div>
                 <div class="job-role">Gameplay and Technical Designer</div>
+                
+                <div class="project-meta">
+                    <span style="color:var(--text-muted)">Project:</span> 
+                    <a href="https://www.instagram.com/syncarnationstudio/" target="_blank">Ballistic Brews</a>
+                    <span style="color:var(--text-muted)"> — Top-down roguelike bullet hell game</span>
+                </div>
+
                 <div class="job-desc">
                     <ul>
                         <li><strong>Weapon & Build System:</strong> Designed and implemented diverse weapon mechanics and combat affixes to support multiple distinct player build archetypes.</li>
@@ -347,7 +368,14 @@
                     <span class="job-company">Tencent Games</span>
                     <span class="job-date">Dec 2020 – Mar 2024</span>
                 </div>
-                <div class="job-role">Senior Combat Designer</div>
+                <div class="job-role">Senior Combat and Technical Designer</div>
+                
+                <div class="project-meta">
+                    <span style="color:var(--text-muted)">Project:</span> 
+                    <a href="https://www.bilibili.com/video/BV1RU3CzZEme?t=2.7" target="_blank">WILD OF ORIGIN</a>
+                    <span style="color:var(--text-muted)"> — Open-world, survival craft, souls-like, cross-platform Action RPG</span>
+                </div>
+
                 <div class="job-desc">
                     <ul>
                         <li><strong>Combat & AI System Architecture:</strong> Architected the core combat framework and foundational AI systems from scratch using UE4/5 & C++.</li>
@@ -363,6 +391,13 @@
                     <span class="job-date">July 2018 – Dec 2020</span>
                 </div>
                 <div class="job-role">Combat & Balance Designer</div>
+                
+                <div class="project-meta">
+                    <span style="color:var(--text-muted)">Project:</span> 
+                    <a href="https://wod.web.sdo.com/Web2/#firstPage" target="_blank">Dragon Nest 2</a>
+                    <span style="color:var(--text-muted)"> — Shipped Mobile Action MMORPG featuring diverse class archetypes</span>
+                </div>
+
                 <div class="job-desc">
                     <ul>
                         <li><strong>Class & Skill Design:</strong> Designed and implemented unique skill mechanics and combat rotations for diverse classes on mobile.</li>
