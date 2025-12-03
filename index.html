@@ -41,7 +41,7 @@
             padding: 40px 20px;
         }
 
-        /* --- 头部 Header (简约大气) --- */
+        /* --- 头部 Header (已更新) --- */
         header {
             text-align: center;
             padding: 80px 0 60px;
@@ -68,6 +68,19 @@
             margin-top: 20px;
             font-size: 0.95rem;
             color: var(--text-muted);
+        }
+        /* 按钮样式的链接 */
+        .btn-link {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 5px 10px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .btn-link:hover {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: var(--accent);
         }
 
         /* --- 通用板块 --- */
@@ -208,8 +221,15 @@
             <h1>NEAL NI</h1>
             <div class="title">Gameplay & Technical Designer</div>
             <div class="contact-info">
-                Vancouver, BC &nbsp;|&nbsp; +1 (778) 231-6806 &nbsp;|&nbsp; nideng@outlook.com <br>
-                <a href="#">View LinkedIn</a> &nbsp;•&nbsp; <a href="#">Download Resume</a>
+                Vancouver, BC &nbsp;|&nbsp; +1 (778) 231-6806 &nbsp;|&nbsp; nideng@outlook.com <br><br>
+                
+                <a href="https://www.linkedin.com/in/neal-ni" target="_blank" class="btn-link">
+                    View LinkedIn
+                </a> 
+                
+                <a href="resume.pdf" target="_blank" class="btn-link">
+                    Download Resume
+                </a>
             </div>
         </header>
 
@@ -346,4 +366,5 @@
 
 </body>
 </html>
+
 
